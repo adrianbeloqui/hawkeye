@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block page_title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+  <h4>Contected Devices</h4>
+  {% for connected_device in connected_devices %}
+      <p>{{ connected_device }} </p>
+  {% endfor %}
+  <h4>Valid Devices</h4>
+  {% for device in devices %}
+      <p>{{ device }} </p>
+  {% endfor %}
+{% endblock %}

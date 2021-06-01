@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <title>{% block title %}{% endblock %} - Hawkeye</title>
+    {% endblock %}
+  </head>
+  <body>
+    <div id="content">
+        <h1>{% block page_title %}{% endblock %}</h1>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/motion/connected-devices">Connected Devices</a></li>
+            <li><a href="/motion/auto-activate">Automatically Activate Motion Detection</a></li>
+            <li><a href="/motion/manually-activate">Manually Activate Motion Detection</a></li>
+            <li><a href="/motion/manually-deactivate">Manually Deactivate Motion Detection</a></li>
+        </ul>
+        {% block content %}{% endblock %}
+    </div>
+    <div id="footer">
+      {% block footer %}
+      &copy; Copyright 2021 by <a href="#">me</a>.
+      {% endblock %}
+    </div>
+  </body>
+</html>
