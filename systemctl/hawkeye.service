@@ -1,0 +1,14 @@
+[Unit]
+Description=Hawkeye NGINX App Service
+After=nginx.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/bin/env python3.6 /opt/hawkeye/app.py
+
+[Install]
+WantedBy=multi-user.target
