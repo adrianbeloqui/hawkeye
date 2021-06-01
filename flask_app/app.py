@@ -28,10 +28,10 @@ def automatically_activate_motion_detection():
         activation = requests.get('{0}/1/detection/start'.format(settings.HAWKEYE_URL))
         if activation.status_code == 200:
             activated = True
-    else:
-        activation = requests.get('{0}/1/detection/pause'.format(settings.HAWKEYE_URL))
-        if activation.status_code == 200:
-            activated = False
+    # else:
+    #     activation = requests.get('{0}/1/detection/pause'.format(settings.HAWKEYE_URL))
+    #     if activation.status_code == 200:
+    #         activated = False
     return render_template('automatically_activate.html', activated=activated)
 
 @app.route('/motion/manually-activate')
@@ -50,10 +50,12 @@ def manually_deactivate_motion_detection():
         deactivated = True
     return render_template('manually_deactivate.html', deactivated=deactivated)
 
+# Only used for local testing with proper HAWKEYE_URL configured
 @app.route('/1/detection/pause')
 def mock():
     return 'Yes', 200
 
+# Only used for local testing with proper HAWKEYE_URL configured
 @app.route('/1/detection/start')
 def mock2():
     return 'Yes', 200
@@ -63,9 +65,9 @@ def _find_devices_connected():
     meta_data = None
     try:
         # Local Testing
-        meta_data = subprocess.check_output(['sudo', 'arp-scan', '--retry=1', '--ignoredups', '-I', 'enp0s3', '--localnet'])
+        #meta_data = subprocess.check_output(['sudo', 'arp-scan', '--retry=1', '--ignoredups', '-I', 'enp0s3', '--localnet'])
         # Prod
-        #meta_data = subprocess.check_output(['arp-scan', '--retry=4', '--ignoredups', '-I wlan0', '--localnet'])
+        meta_data = subprocess.check_output(['arp-scan', '--retry=4', '--ignoredups', '-I wlan0', '--localnet'])
     except Exception as e:
         print('An exception happened trying to get the devices: ' + str(e))
         return []
