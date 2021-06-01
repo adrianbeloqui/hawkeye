@@ -32,3 +32,20 @@ Took note of these and then validated that the same MAC addresses appear when ru
 sudo arp-scan --retry=8 --ignoredups -I wlan0 --localnet
 
 I will use this command in the Python app because is a lot faster.
+
+## Create Service for Systemctl
+
+Copy /systemctl/hawkeye.service into /etc/systemd/system/hawkeye.service
+
+Then, run:
+
+systemctl start hawkeye
+systemctl enable hawkeye
+
+## Add Crontab job
+
+run:
+
+crontab -e
+
+Then copy/paste the contents of /crontab/crontab_job into that
