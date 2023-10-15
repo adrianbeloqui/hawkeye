@@ -1,4 +1,6 @@
-# hawkeye
+# Hawkeye
+
+Hawkeye is a Flask app to manage MotionOS internally
 
 ## Requirements
 
@@ -49,3 +51,7 @@ run:
 crontab -e
 
 Then copy/paste the contents of /crontab/crontab_job into that
+
+# MotionOS
+
+systemctl start motioneye
